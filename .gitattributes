@@ -1,0 +1,2 @@
+# See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=818958
+debian/changelog merge=dpkg-mergechangelogs
