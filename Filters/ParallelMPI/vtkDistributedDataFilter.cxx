@@ -1206,7 +1206,10 @@ vtkDataSet *vtkDistributedDataFilter::TestFixTooFewInputFiles(vtkDataSet *input)
   vtkIdType cellsPerNode = numTotalCells / nprocs;
 
   vtkIdList **sendCells = new vtkIdList * [ nprocs ];
-  memset(sendCells, 0, sizeof(vtkIdList *) * nprocs);
+  
+  if (sizeof(vtkIdList *) * nprocs > 0) {
+    memset(sendCells, 0, sizeof(vtkIdList *) * nprocs);
+  }
 
   if (numConsumers == nprocs - 1)
   {
@@ -1700,7 +1703,9 @@ vtkFloatArray **
   // Exchange int arrays
 
   float **recvArrays = new float * [nprocs];
-  memset(recvArrays, 0, sizeof(float *) * nprocs);
+  if (sizeof(float *) * nprocs > 0) {
+    memset(recvArrays, 0, sizeof(float *) * nprocs);
+  }
 
   if (sendSize[me] > 0)  // sent myself an array
   {
@@ -1822,7 +1827,9 @@ vtkIdTypeArray **
   // Exchange int arrays
 
   vtkIdType **recvArrays = new vtkIdType * [nprocs];
-  memset(recvArrays, 0, sizeof(vtkIdType *) * nprocs);
+  if (sizeof(vtkIdType *) * nprocs > 0) {
+    memset(recvArrays, 0, sizeof(vtkIdType *) * nprocs);
+  }
 
   if (sendSize[me] > 0)  // sent myself an array
   {
@@ -3167,7 +3174,9 @@ int vtkDistributedDataFilter::AssignGlobalNodeIds(vtkUnstructuredGrid *grid)
   vtkIdType nGridPoints = grid->GetNumberOfPoints();
 
   vtkIdType *numPointsOutside = new vtkIdType [nprocs];
-  memset(numPointsOutside, 0, sizeof(vtkIdType) * nprocs);
+  if (sizeof(vtkIdType) * nprocs > 0) {
+    memset(numPointsOutside, 0, sizeof(vtkIdType) * nprocs);
+  }
 
   vtkIdTypeArray *globalIds = vtkIdTypeArray::New();
   globalIds->SetNumberOfValues(nGridPoints);
@@ -3249,10 +3258,16 @@ int vtkDistributedDataFilter::AssignGlobalNodeIds(vtkUnstructuredGrid *grid)
   // global ID back?
 
   vtkFloatArray **ptarrayOut = new vtkFloatArray * [nprocs];
-  memset(ptarrayOut, 0, sizeof(vtkFloatArray *) * nprocs);
+  
+  if (sizeof(vtkFloatArray *) * nprocs > 0) {
+    memset(ptarrayOut, 0, sizeof(vtkFloatArray *) * nprocs);
+  }
 
   vtkIdTypeArray **localIds     = new vtkIdTypeArray * [nprocs];
-  memset(localIds, 0, sizeof(vtkIdTypeArray *) * nprocs);
+  
+  if (sizeof(vtkIdTypeArray *) * nprocs > 0) {
+    memset(localIds, 0, sizeof(vtkIdTypeArray *) * nprocs);
+  }
 
   vtkIdType *next = new vtkIdType [nprocs];
   vtkIdType *next3 = new vtkIdType [nprocs];
@@ -3430,7 +3445,9 @@ vtkIdTypeArray **vtkDistributedDataFilter::FindGlobalPointIds(
   {
     // There are no cells in my assigned region
 
-    memset(gids, 0, sizeof(vtkIdTypeArray *) * nprocs);
+    if (sizeof(vtkIdTypeArray *) * nprocs > 0) {
+      memset(gids, 0, sizeof(vtkIdTypeArray *) * nprocs);
+    }
 
     return gids;
   }
@@ -3641,7 +3658,10 @@ vtkIdTypeArray **vtkDistributedDataFilter::MakeProcessLists(
   std::multimap<int, int>::iterator mapIt;
 
   vtkIdTypeArray **processList = new vtkIdTypeArray * [nprocs];
-  memset(processList, 0, sizeof (vtkIdTypeArray *) * nprocs);
+
+  if (sizeof (vtkIdTypeArray *) * nprocs > 0) {
+    memset(processList, 0, sizeof (vtkIdTypeArray *) * nprocs);
+  }
 
   for (int i=0; i<nprocs; i++)
   {
@@ -3734,7 +3754,9 @@ vtkIdTypeArray **vtkDistributedDataFilter::GetGhostPointIds(
   vtkIdType numPoints = grid->GetNumberOfPoints();
 
   vtkIdTypeArray **ghostPtIds = new vtkIdTypeArray * [nprocs];
-  memset(ghostPtIds, 0, sizeof(vtkIdTypeArray *) * nprocs);
+  if (sizeof(vtkIdTypeArray *) * nprocs) {
+    memset(ghostPtIds, 0, sizeof(vtkIdTypeArray *) * nprocs);
+  }
 
   if (numPoints < 1)
   {
