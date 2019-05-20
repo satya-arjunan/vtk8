@@ -156,6 +156,10 @@ private:
    * to implement IsAvailable.
    */
   static Availability CheckMPLAvailability();
+  static void DisableMPL()
+    {
+    MPLMathTextAvailable = UNAVAILABLE;
+    };
 
   //@{
   /**

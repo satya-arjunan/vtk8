@@ -6,9 +6,6 @@ check_library_exists("socket" getsockname "" VTK_HAVE_LIBSOCKET)
 
 if(NOT DEFINED VTK_HAVE_GETSOCKNAME_WITH_SOCKLEN_T)
   set(VTK_GETSOCKNAME_LIBS)
-  if(VTK_HAVE_LIBSOCKET)
-    list(APPEND VTK_GETSOCKNAME_LIBS "socket")
-  endif()
   message(STATUS "Checking for getsockname with socklen_t")
   try_compile(VTK_HAVE_GETSOCKNAME_WITH_SOCKLEN_T_COMPILED
     ${VTK_BINARY_DIR}/CMakeTmp/SocklenT

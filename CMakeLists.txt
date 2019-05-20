@@ -118,9 +118,7 @@ endif()
 
 # The doxygen documentation needs to be aware of all modules.
 option(BUILD_DOCUMENTATION "Build the VTK documentation" OFF)
-if(BUILD_DOCUMENTATION)
-  add_subdirectory(Utilities/Doxygen)
-endif()
+add_subdirectory(Utilities/Doxygen)
 
 # If python wrapping and testing is enabled then add driver scripts to run
 # tests.  Note: Many pythong tests used to be automatically converted from TCL
