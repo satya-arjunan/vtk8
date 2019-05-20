@@ -311,7 +311,7 @@ vtk_module_library(${vtk-module} ${Module_SRCS})
 vtk_opengl_link(${vtk-module})
 if(VTK_USE_X)
   vtk_module_link_libraries(${vtk-module}
-    LINK_PUBLIC ${GLEW_LIBRARY} ${X11_LIBRARIES} ${X11_Xt_LIB})
+    LINK_PUBLIC ${X11_LIBRARIES} ${X11_Xt_LIB})
 elseif(VTK_USE_COCOA)
   vtk_module_link_libraries(${vtk-module} LINK_PUBLIC "-framework Cocoa")
 endif()
