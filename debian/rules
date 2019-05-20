@@ -24,6 +24,7 @@ extra_flags +=  \
 	-DBUILD_EXAMPLES=ON \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_TESTING=OFF \
+	-DModule_vtkAcceleratorsVTKm:BOOL=OFF \
 	-DVTK_USE_TK=ON \
 	\
 	-DVTK_WRAP_JAVA=ON \
