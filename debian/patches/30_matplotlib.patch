@@ -1,6 +1,17 @@
+From: Debian Science Team
+ <debian-science-maintainers@lists.alioth.debian.org>
+Date: Mon, 20 May 2019 12:51:16 +1000
+Subject: _matplotlib
+
+---
+ Rendering/Matplotlib/vtkMatplotlibMathTextUtilities.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Rendering/Matplotlib/vtkMatplotlibMathTextUtilities.h b/Rendering/Matplotlib/vtkMatplotlibMathTextUtilities.h
+index 4fe263d..c4770ff 100644
 --- a/Rendering/Matplotlib/vtkMatplotlibMathTextUtilities.h
 +++ b/Rendering/Matplotlib/vtkMatplotlibMathTextUtilities.h
-@@ -156,6 +156,10 @@
+@@ -156,6 +156,10 @@ private:
     * to implement IsAvailable.
     */
    static Availability CheckMPLAvailability();

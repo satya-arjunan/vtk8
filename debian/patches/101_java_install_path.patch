@@ -1,14 +1,23 @@
-Description: Install Java modules in the correct path
- This patch corrects the installation of the native Java modules
- to go to the path given by the Debian Java Policy. This helps
- to later use the simple install file to get them to the right
- location in the package. 
-Author: Gert Wollny <gw.fossdev@gmail.com
+From: Debian Science Team
+ <debian-science-maintainers@lists.alioth.debian.org>
+Date: Mon, 20 May 2019 12:51:16 +1000
+Subject: Install Java modules in the correct path
+
 Last-Update: 2016-03-26
 
+This patch corrects the installation of the native Java modules
+to go to the path given by the Debian Java Policy. This helps
+to later use the simple install file to get them to the right
+location in the package.
+---
+ CMake/vtkJavaWrapping.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMake/vtkJavaWrapping.cmake b/CMake/vtkJavaWrapping.cmake
+index d57b0f7..4d19396 100644
 --- a/CMake/vtkJavaWrapping.cmake
 +++ b/CMake/vtkJavaWrapping.cmake
-@@ -73,7 +73,7 @@ function(vtk_add_java_wrapping module_na
+@@ -73,7 +73,7 @@ function(vtk_add_java_wrapping module_name module_srcs module_hdrs)
      install(TARGETS ${module_name}Java
        EXPORT ${VTK_INSTALL_EXPORT_NAME}
        RUNTIME DESTINATION ${VTK_INSTALL_RUNTIME_DIR} COMPONENT RuntimeLibraries

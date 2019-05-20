@@ -1,11 +1,18 @@
-Description: set JVM max memory to 1024m.
-Author: Matthias Klose <doko@ubuntu.com>
+From: Matthias Klose <doko@ubuntu.com>
+Date: Mon, 20 May 2019 12:51:16 +1000
+Subject: set JVM max memory to 1024m.
+
 Acked-By: Anton Gladky <gladk@debian.org>
 Last-Update: 2016-02-12
+---
+ Wrapping/Java/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
 
+diff --git a/Wrapping/Java/CMakeLists.txt b/Wrapping/Java/CMakeLists.txt
+index f7044ef..d6d9653 100644
 --- a/Wrapping/Java/CMakeLists.txt
 +++ b/Wrapping/Java/CMakeLists.txt
-@@ -96,6 +96,8 @@
+@@ -96,6 +96,8 @@ if(APPLE)
    set(JAVAC_OPTIONS -J-Xmx512m)
  endif()
  

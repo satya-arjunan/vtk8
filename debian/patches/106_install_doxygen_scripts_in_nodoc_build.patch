@@ -1,6 +1,18 @@
+From: Debian Science Team
+ <debian-science-maintainers@lists.alioth.debian.org>
+Date: Mon, 20 May 2019 12:51:17 +1000
+Subject: _install_doxygen_scripts_in_nodoc_build
+
+---
+ CMakeLists.txt                   |   4 +-
+ Utilities/Doxygen/CMakeLists.txt | 117 ++++++++++++++++++++-------------------
+ 2 files changed, 61 insertions(+), 60 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ac56d21..0cb7f8d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -118,9 +118,7 @@
+@@ -118,9 +118,7 @@ endif()
  
  # The doxygen documentation needs to be aware of all modules.
  option(BUILD_DOCUMENTATION "Build the VTK documentation" OFF)
@@ -11,6 +23,8 @@
  
  # If python wrapping and testing is enabled then add driver scripts to run
  # tests.  Note: Many pythong tests used to be automatically converted from TCL
+diff --git a/Utilities/Doxygen/CMakeLists.txt b/Utilities/Doxygen/CMakeLists.txt
+index 3f285f6..019f097 100644
 --- a/Utilities/Doxygen/CMakeLists.txt
 +++ b/Utilities/Doxygen/CMakeLists.txt
 @@ -1,69 +1,72 @@
@@ -20,7 +34,11 @@
 -find_package(Doxygen REQUIRED)
 -find_package(Perl REQUIRED)
 -find_package(HTMLHelp)
--
++if (BUILD_DOCUMENTATION) 
++  find_package(Doxygen REQUIRED)
++  find_package(Perl REQUIRED)
++  find_package(HTMLHelp)
+ 
 -option(DOXYGEN_SHORT_NAMES "Build Doxygen of VTK using short file names" OFF)
 -option(DOXYGEN_KEEP_TEMP "Do not delete the temporary Doxygen headers" OFF)
 -option(DOXYGEN_GENERATE_HTMLHELP "Generate HTML help (CHM) files" ON)
@@ -44,11 +62,6 @@
 -  set(HAVE_DOT_YESNO YES)
 -  if(NOT DOT_PATH)
 -    get_filename_component(DOT_PATH ${DOT} PATH)
-+if (BUILD_DOCUMENTATION) 
-+  find_package(Doxygen REQUIRED)
-+  find_package(Perl REQUIRED)
-+  find_package(HTMLHelp)
-+
 +  option(DOXYGEN_SHORT_NAMES "Build Doxygen of VTK using short file names" OFF)
 +  option(DOXYGEN_KEEP_TEMP "Do not delete the temporary Doxygen headers" OFF)
 +  option(DOXYGEN_GENERATE_HTMLHELP "Generate HTML help (CHM) files" ON)

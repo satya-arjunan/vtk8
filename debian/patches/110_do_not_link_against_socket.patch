@@ -1,8 +1,17 @@
-Description: Do not try linking with -lsocket
+From: Debian Science Team
+ <debian-science-maintainers@lists.alioth.debian.org>
+Date: Mon, 20 May 2019 12:51:17 +1000
+Subject: Do not try linking with -lsocket
 
+---
+ Common/System/vtkTestSocketFeatures.cmake | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/Common/System/vtkTestSocketFeatures.cmake b/Common/System/vtkTestSocketFeatures.cmake
+index 9efdbbc..5bed61a 100644
 --- a/Common/System/vtkTestSocketFeatures.cmake
 +++ b/Common/System/vtkTestSocketFeatures.cmake
-@@ -6,9 +6,6 @@
+@@ -6,9 +6,6 @@ check_library_exists("socket" getsockname "" VTK_HAVE_LIBSOCKET)
  
  if(NOT DEFINED VTK_HAVE_GETSOCKNAME_WITH_SOCKLEN_T)
    set(VTK_GETSOCKNAME_LIBS)

@@ -1,6 +1,18 @@
+From: Debian Science Team
+ <debian-science-maintainers@lists.alioth.debian.org>
+Date: Mon, 20 May 2019 12:51:16 +1000
+Subject: _soversion-sharedlib
+
+---
+ CMake/vtkModuleMacros.cmake | 4 ++--
+ Rendering/Tk/CMakeLists.txt | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMake/vtkModuleMacros.cmake b/CMake/vtkModuleMacros.cmake
+index db03754..e907a05 100644
 --- a/CMake/vtkModuleMacros.cmake
 +++ b/CMake/vtkModuleMacros.cmake
-@@ -439,8 +439,8 @@
+@@ -439,8 +439,8 @@ endfunction()
  function(vtk_target_name _name)
    get_property(_type TARGET ${_name} PROPERTY TYPE)
    if(NOT "${_type}" STREQUAL EXECUTABLE AND NOT VTK_JAVA_INSTALL)
@@ -11,9 +23,11 @@
    endif()
    if("${_name}" MATCHES "^[Vv][Tt][Kk]")
      set(_vtk "")
+diff --git a/Rendering/Tk/CMakeLists.txt b/Rendering/Tk/CMakeLists.txt
+index 976cc4f..94cbe1a 100644
 --- a/Rendering/Tk/CMakeLists.txt
 +++ b/Rendering/Tk/CMakeLists.txt
-@@ -82,7 +82,7 @@
+@@ -82,7 +82,7 @@ if(TK_FOUND AND VTK_USE_TK)
      vtk_target_install(vtkRenderingPythonTkWidgets)
  
      set_property(TARGET vtkRenderingPythonTkWidgets PROPERTY OUTPUT_NAME
