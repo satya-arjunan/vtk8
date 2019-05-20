@@ -68,7 +68,7 @@ extra_flags +=  \
 	-DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed" \
 	-DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed" \
 	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed" \
-	-DCMAKE_BUILD_TYPE=None \
+	-DCMAKE_BUILD_TYPE=Release \
 	-DVTK_USE_GCC_VISIBILITY=ON \
 	-DModule_vtkRenderingExternal=ON
 
